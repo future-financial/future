@@ -1,5 +1,6 @@
 import 'package:future/app/routes/router.dart';
 import 'package:future/app/theme/app_theme.dart';
+import 'package:future/config/system_ui_config.dart';
 import 'package:future/shared/constants/app_info.dart';
 import 'package:future/shared/lib/google/instance.dart';
 import 'package:future/shared/lib/supabase/instance.dart';
@@ -12,6 +13,7 @@ void main() async {
   await initializeGoogleSignIn();
   await initializeSupabase();
   await AppInfo.init();
+  SystemUiConfig.setDefault();
 
   runApp(const ProviderScope(child: MyApp()));
 }
