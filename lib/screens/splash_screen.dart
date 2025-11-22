@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (session == null) {
         context.go(Routes.login);
       } else {
-        context.go(Routes.home);
+        context.go(Routes.main);
       }
     });
   }

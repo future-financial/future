@@ -1,7 +1,7 @@
 import 'package:future/app/guards/authentication_guard.dart';
 import 'package:future/app/routes/routes.dart';
-import 'package:future/screens/home_screen.dart';
 import 'package:future/screens/login_screen.dart';
+import 'package:future/screens/main_screen.dart';
 import 'package:future/screens/splash_screen.dart';
 import 'package:future/shared/helpers/go_router_stream.dart';
 import 'package:future/shared/lib/supabase/instance.dart';
@@ -15,9 +15,9 @@ final GoRouter router = GoRouter(
     return authGuard.redirect(state);
   }),
   routes: [
-    /// Route for home screen
-    /// Path: [Routes.home]
-    GoRoute(path: Routes.home, builder: (context, state) => HomeScreen()),
+    /// Route for main screen
+    /// Path: [Routes.main]
+    GoRoute(path: Routes.main, builder: (context, state) => MainScreen()),
 
     /// Route for splash screen
     /// Path: [Routes.splash]

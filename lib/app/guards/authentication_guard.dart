@@ -10,7 +10,7 @@ class AuthenticationGuard {
 
     final isOnSplash = state.matchedLocation == Routes.splash;
     final isOnLogin = state.matchedLocation == Routes.login;
-    final isOnHome = state.matchedLocation == Routes.home;
+    final isOnMain = state.matchedLocation == Routes.main;
 
     if (isOnSplash) {
       return null;
@@ -21,11 +21,11 @@ class AuthenticationGuard {
     }
 
     if (session != null && isOnLogin) {
-      return Routes.home;
+      return Routes.main;
     }
 
-    if (session != null && !isOnHome) {
-      return Routes.home;
+    if (session != null && !isOnMain) {
+      return Routes.main;
     }
 
     return null;

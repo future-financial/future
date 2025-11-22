@@ -41,6 +41,7 @@ class Button extends StatelessWidget {
         style = TextButton.styleFrom(
           foregroundColor: theme.colorScheme.primary,
           backgroundColor: Colors.transparent,
+          overlayColor: Colors.transparent,
         );
         break;
 
