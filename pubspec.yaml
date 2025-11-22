@@ -2,7 +2,7 @@ name: future
 description: "A simple Financial Application"
 publish_to: "none"
 
-version: 1.0.0
+version: 0.1.1-development
 
 environment:
   sdk: ^3.9.2
