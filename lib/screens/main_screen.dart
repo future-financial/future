@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart' hide BottomNavigationBar;
 import 'package:future/screens/home_screen.dart';
+import 'package:future/shared/constants/border.dart';
+import 'package:future/shared/extensions/build_context_extensions.dart';
 import 'package:future/shared/ui/bottom_navigation_bar.dart';
+import 'package:heroicons/heroicons.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -40,6 +43,16 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (index) {
           _onTabTapped(index);
         },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: AppBorders.borderRadiusFull,
+        ),
+        onPressed: () {
+          context.showInfoSnackBar("This feature is coming soon!");
+        },
+        child: HeroIcon(HeroIcons.plus),
       ),
     );
   }
