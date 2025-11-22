@@ -1,5 +1,6 @@
 import 'package:future/features/email_sign_in/ui/form.dart';
 import 'package:future/features/google_sign_in/ui/google_sign_in_button.dart';
+import 'package:future/shared/constants/app_info.dart';
 import 'package:future/shared/constants/assets.dart';
 import 'package:future/shared/constants/spacing.dart';
 import 'package:future/shared/extensions/text_extensions.dart';
@@ -28,7 +29,7 @@ class LoginScreen extends ConsumerWidget {
                 Image.asset(AppAssets.transparentLogo, height: 35),
                 AppSpacing.gapH8,
                 Text(
-                  "Future",
+                  AppInfo.appName,
                   style: Theme.of(context).textTheme.headlineMediumBold
                       .copyWith(
                         letterSpacing: -1.5,
@@ -39,7 +40,7 @@ class LoginScreen extends ConsumerWidget {
             ),
             AppSpacing.gapV24,
             Text(
-              'See your money clearly',
+              'See your money clearly.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             AppSpacing.gapV24,
