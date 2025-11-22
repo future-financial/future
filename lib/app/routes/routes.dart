@@ -4,6 +4,6 @@ class Routes {
   /// Authentication route
   static const String login = '/auth/login';
 
-  /// Home route
-  static const String home = '/home';
+  /// Main route
+  static const String main = '/main';
 }

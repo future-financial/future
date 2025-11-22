@@ -1,5 +1,7 @@
+import 'package:flutter/services.dart';
 import 'package:future/app/routes/router.dart';
 import 'package:future/app/theme/app_theme.dart';
+import 'package:future/shared/constants/colors.dart';
 import 'package:future/shared/lib/google/instance.dart';
 import 'package:future/shared/lib/supabase/instance.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,15 @@ void main() async {
 
   await initializeGoogleSignIn();
   await initializeSupabase();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: AppColors.white,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: AppColors.white,
+      systemNavigationBarIconBrightness: Brightness.light,
+    ),
+  );
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -23,6 +34,12 @@ class MyApp extends StatelessWidget {
       routerConfig: router,
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: const ScrollBehavior().copyWith(overscroll: false),
+          child: SafeArea(child: child!),
+        );
+      },
     );
   }
 }

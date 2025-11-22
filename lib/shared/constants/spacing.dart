@@ -8,6 +8,8 @@ class AppSpacing {
   static EdgeInsets p16 = const EdgeInsets.all(16);
 
   static EdgeInsets horizontal16 = const EdgeInsets.symmetric(horizontal: 16);
+
+  static EdgeInsets vertical8 = const EdgeInsets.symmetric(vertical: 8);
   static EdgeInsets vertical16 = const EdgeInsets.symmetric(vertical: 16);
 
   static SizedBox gapH8 = const SizedBox(width: 8);
