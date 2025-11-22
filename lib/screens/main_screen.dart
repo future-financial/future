@@ -3,6 +3,7 @@ import 'package:future/screens/home_screen.dart';
 import 'package:future/shared/constants/border.dart';
 import 'package:future/shared/extensions/build_context_extensions.dart';
 import 'package:future/shared/ui/bottom_navigation_bar.dart';
+import 'package:heroicons/heroicons.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -51,7 +52,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {
           context.showInfoSnackBar("This feature is coming soon!");
         },
-        child: Icon(Icons.add),
+        child: HeroIcon(HeroIcons.plus),
       ),
     );
   }
