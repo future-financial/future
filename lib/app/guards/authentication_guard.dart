@@ -7,6 +7,7 @@ class AuthenticationGuard {
 
   String? redirect(GoRouterState state) {
     final session = supabase.auth.currentSession;
+
     final isOnSplash = state.matchedLocation == Routes.splash;
     final isOnLogin = state.matchedLocation == Routes.login;
     final isOnHome = state.matchedLocation == Routes.home;

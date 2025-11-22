@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:future/shared/constants/border.dart';
 
 class LabeledTextFormField extends StatelessWidget {
   final String label;
@@ -8,6 +9,7 @@ class LabeledTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final bool disabled;
 
   const LabeledTextFormField({
     super.key,
@@ -18,6 +20,7 @@ class LabeledTextFormField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.onSaved,
+    this.disabled = false,
   });
 
   @override
@@ -38,10 +41,11 @@ class LabeledTextFormField extends StatelessWidget {
           keyboardType: keyboardType,
           validator: validator,
           onSaved: onSaved,
+          enabled: !disabled,
           decoration: InputDecoration(
             hintText: hintText,
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
+            border: OutlineInputBorder(
+              borderRadius: AppBorders.borderRadiusFull,
             ),
           ),
         ),

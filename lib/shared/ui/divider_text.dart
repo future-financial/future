@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:future/shared/constants/colors.dart';
+import 'package:future/shared/constants/spacing.dart';
 
 class DividerWithText extends StatelessWidget {
   final String text;
@@ -20,21 +22,24 @@ class DividerWithText extends StatelessWidget {
       children: [
         Expanded(
           child: Divider(
-            color: lineColor ?? Colors.grey[300],
+            color: lineColor ?? AppColors.gray100,
             thickness: thickness,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: AppSpacing.p8,
           child: Text(
             text,
             style:
-                textStyle ?? TextStyle(color: Colors.grey[600], fontSize: 14),
+                textStyle ??
+                Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
           ),
         ),
         Expanded(
           child: Divider(
-            color: lineColor ?? Colors.grey[300],
+            color: lineColor ?? AppColors.gray100,
             thickness: thickness,
           ),
         ),

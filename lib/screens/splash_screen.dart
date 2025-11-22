@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:future/app/environtment/env.dart';
 import 'package:future/app/routes/routes.dart';
+import 'package:future/shared/constants/assets.dart';
 import 'package:future/shared/constants/spacing.dart';
 import 'package:future/shared/lib/supabase/instance.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/logo_transparent.png',
+                      AppAssets.transparentLogo,
                       width: 170,
                       height: 170,
                     ),

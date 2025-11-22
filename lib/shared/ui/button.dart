@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 enum ButtonVariant { primary, outlined, ghost, danger }
 
 class Button extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Widget child;
+  final bool isLoading;
   final ButtonVariant variant;
 
   const Button({
@@ -12,12 +13,14 @@ class Button extends StatelessWidget {
     required this.onPressed,
     required this.child,
     this.variant = ButtonVariant.primary,
+    this.isLoading = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    // Pilih style
     final ButtonStyle style;
     switch (variant) {
       case ButtonVariant.primary:
@@ -38,7 +41,6 @@ class Button extends StatelessWidget {
         style = TextButton.styleFrom(
           foregroundColor: theme.colorScheme.primary,
           backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
         );
         break;
 
@@ -50,16 +52,44 @@ class Button extends StatelessWidget {
         break;
     }
 
-    switch (variant) {
-      case ButtonVariant.primary:
-      case ButtonVariant.danger:
-        return ElevatedButton(onPressed: onPressed, style: style, child: child);
+    // Warna spinner sesuai varian
+    Color spinnerColor = switch (variant) {
+      ButtonVariant.primary => theme.colorScheme.onPrimary,
+      ButtonVariant.outlined => theme.colorScheme.primary,
+      ButtonVariant.ghost => theme.colorScheme.primary,
+      ButtonVariant.danger => theme.colorScheme.onError,
+    };
 
-      case ButtonVariant.outlined:
-        return OutlinedButton(onPressed: onPressed, style: style, child: child);
+    final Widget content = isLoading
+        ? SizedBox(
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: spinnerColor,
+            ),
+          )
+        : child;
 
-      case ButtonVariant.ghost:
-        return TextButton(onPressed: onPressed, style: style, child: child);
-    }
+    // Factory tombol sesuai varian
+    return switch (variant) {
+      ButtonVariant.primary || ButtonVariant.danger => ElevatedButton(
+        onPressed: isLoading ? null : onPressed,
+        style: style,
+        child: content,
+      ),
+
+      ButtonVariant.outlined => OutlinedButton(
+        onPressed: isLoading ? null : onPressed,
+        style: style,
+        child: content,
+      ),
+
+      ButtonVariant.ghost => TextButton(
+        onPressed: isLoading ? null : onPressed,
+        style: style,
+        child: content,
+      ),
+    };
   }
 }
