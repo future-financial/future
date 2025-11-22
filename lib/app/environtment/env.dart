@@ -15,7 +15,4 @@ abstract class Env {
 
   @EnviedField(varName: 'GOOGLE_SERVER_CLIENT_ID', obfuscate: true)
   static final String googleServerClientId = _Env.googleServerClientId;
-
-  @EnviedField(varName: 'APP_VERSION', obfuscate: true)
-  static final String appVersion = _Env.appVersion;
 }

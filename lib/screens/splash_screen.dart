@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:future/app/environtment/env.dart';
 import 'package:future/app/routes/routes.dart';
+import 'package:future/shared/constants/app.dart';
 import 'package:future/shared/constants/assets.dart';
 import 'package:future/shared/constants/spacing.dart';
 import 'package:future/shared/lib/supabase/instance.dart';
@@ -68,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               Text(
-                "Version ${Env.appVersion}",
+                "Version ${AppInfo.version}",
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
