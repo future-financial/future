@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:future/shared/constants/colors.dart';
 import 'package:future/shared/constants/spacing.dart';
-import 'package:future/shared/extensions/build_context_extensions.dart';
 import 'package:future/shared/ui/button.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -40,7 +39,7 @@ class BottomNavigationBar extends StatelessWidget {
             onTap: onTap,
           ),
           AppSpacing.gapH16,
-          _CenterAddButton(),
+          Expanded(child: SizedBox.shrink()),
           AppSpacing.gapH16,
           _NavItem(
             icon: HeroIcons.documentText,
@@ -90,58 +89,6 @@ class _NavItem extends StatelessWidget {
               : AppColors.gray300,
           style: isActive ? HeroIconStyle.solid : HeroIconStyle.outline,
         ),
-      ),
-    );
-  }
-}
-
-class _CenterAddButton extends StatelessWidget {
-  const _CenterAddButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Positioned(
-            top: -20,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Container(
-                height: 60,
-                width: 60,
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.plum700.withValues(alpha: 0.3),
-                      blurRadius: 5,
-                      offset: const Offset(0, 0),
-                      spreadRadius: 3,
-                    ),
-                  ],
-                ),
-                child: Button(
-                  variant: ButtonVariant.ghost,
-                  onPressed: () {
-                    context.showInfoSnackBar(
-                      "Add new transaction is coming soon!",
-                    );
-                  },
-                  child: HeroIcon(
-                    HeroIcons.plus,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    size: 30,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
