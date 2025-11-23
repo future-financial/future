@@ -1,18 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncValue;
 import 'package:future/features/google_sign_in/services/google_sign_in_service.dart';
-import 'package:future/features/google_sign_in/services/supabase_sign_in_with_token_service.dart';
+import 'package:future/features/google_sign_in/services/sign_in_with_token_service.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:future/shared/state/async_value.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class GoogleAuthNotifier extends StateNotifier<AsyncValue<void>> {
   final GoogleSignInService _googleSignInService;
-  final SupabaseSignInWithTokenService _supabaseSignInWithTokenService;
+  final SignInWithTokenService _signInWithTokenService;
 
-  GoogleAuthNotifier(
-    this._googleSignInService,
-    this._supabaseSignInWithTokenService,
-  ) : super(const AsyncValue.data(null));
+  GoogleAuthNotifier(this._googleSignInService, this._signInWithTokenService)
+    : super(const AsyncValue.data(null));
 
   Future<void> signInWithGoogle() async {
     try {
@@ -20,7 +18,7 @@ class GoogleAuthNotifier extends StateNotifier<AsyncValue<void>> {
 
       final googleIdToken = await _googleSignInService.signInAndGetIdToken();
 
-      await _supabaseSignInWithTokenService.signInWithIdToken(googleIdToken!);
+      await _signInWithTokenService.signInWithIdToken(googleIdToken!);
     } on AuthApiException catch (e) {
       state = AsyncValue.error(e, "Google sign-in failed. Please try again.");
     } catch (e) {
@@ -32,14 +30,12 @@ class GoogleAuthNotifier extends StateNotifier<AsyncValue<void>> {
 }
 
 final googleAuthServiceProvider = Provider((ref) => GoogleSignInService());
-final supabaseAuthServiceProvider = Provider(
-  (ref) => SupabaseSignInWithTokenService(),
-);
+final authServiceProvider = Provider((ref) => SignInWithTokenService());
 
 final googleAuthNotifierProvider =
     StateNotifierProvider<GoogleAuthNotifier, AsyncValue<void>>(
       (ref) => GoogleAuthNotifier(
         ref.read(googleAuthServiceProvider),
-        ref.read(supabaseAuthServiceProvider),
+        ref.read(authServiceProvider),
       ),
     );
