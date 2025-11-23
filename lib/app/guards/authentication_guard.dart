@@ -1,12 +1,12 @@
 import 'package:future/app/routes/routes.dart';
-import 'package:future/shared/lib/supabase/instance.dart';
+import 'package:future/entities/session/services/session_service.dart';
 import 'package:go_router/go_router.dart';
 
 class AuthenticationGuard {
   AuthenticationGuard();
 
   String? redirect(GoRouterState state) {
-    final session = supabase.auth.currentSession;
+    final session = SessionService.getSession();
 
     final isOnSplash = state.matchedLocation == Routes.splash;
     final isOnLogin = state.matchedLocation == Routes.login;

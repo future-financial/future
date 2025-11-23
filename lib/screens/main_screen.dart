@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide BottomNavigationBar;
-import 'package:future/screens/home_screen.dart';
+import 'package:future/screens/home/ui/home_screen.dart';
 import 'package:future/shared/constants/border.dart';
 import 'package:future/shared/extensions/build_context_extensions.dart';
 import 'package:future/shared/ui/bottom_navigation_bar.dart';

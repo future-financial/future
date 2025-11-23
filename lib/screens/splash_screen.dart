@@ -1,21 +1,23 @@
 import 'dart:async';
 
 import 'package:future/app/routes/routes.dart';
+import 'package:future/entities/session/services/session_service.dart';
+import 'package:future/entities/user/view_model/user_notifier_provider.dart';
 import 'package:future/shared/constants/app_info.dart';
 import 'package:future/shared/constants/assets.dart';
 import 'package:future/shared/constants/spacing.dart';
-import 'package:future/shared/lib/supabase/instance.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   double _opacity = 0.0;
 
   @override
@@ -28,16 +30,20 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
 
-    Timer(const Duration(seconds: 2), () async {
+    Timer(const Duration(seconds: 2), () {
       if (!mounted) return;
 
-      final session = supabase.auth.currentSession;
+      final session = SessionService.getSession();
 
       if (session == null) {
         context.go(Routes.login);
       } else {
         context.go(Routes.main);
       }
+    });
+
+    Future.microtask(() {
+      ref.read(userNotifierProvider.notifier).getCurrentUser();
     });
   }
 
