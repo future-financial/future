@@ -1,4 +1,5 @@
-import 'package:future/features/google_sign_in/view_model/google_sign_in_notifier.dart';
+import 'package:future/entities/user/view_model/user_notifier_provider.dart';
+import 'package:future/features/google_sign_in/view_model/google_sign_in_notifier_provider.dart';
 import 'package:future/shared/constants/assets.dart';
 import 'package:future/shared/constants/spacing.dart';
 import 'package:future/shared/extensions/async_value_extensions.dart';
@@ -12,8 +13,9 @@ class GoogleLoginButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    void onPressed() {
-      ref.read(googleAuthNotifierProvider.notifier).signInWithGoogle();
+    void onPressed() async {
+      await ref.read(googleAuthNotifierProvider.notifier).signInWithGoogle();
+      ref.read(userNotifierProvider.notifier).getCurrentUser();
     }
 
     final googleAuthState = ref.watch(googleAuthNotifierProvider);

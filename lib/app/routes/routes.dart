@@ -6,4 +6,7 @@ class Routes {
 
   /// Main route
   static const String main = '/main';
+
+  /// Profile route
+  static const String profile = '/profile';
 }

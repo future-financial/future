@@ -22,7 +22,7 @@ class GoogleAuthNotifier extends StateNotifier<AsyncValue<void>> {
     } on AuthApiException catch (e) {
       state = AsyncValue.error(e, "Google sign-in failed. Please try again.");
     } catch (e) {
-      state = AsyncValue.error(e, "An unexpected error occurred.");
+      state = AsyncValue.error(e);
     } finally {
       state = const AsyncValue.data(null);
     }

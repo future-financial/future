@@ -21,10 +21,7 @@ class EmailSignInNotifier extends StateNotifier<AsyncValue<void>> {
         "Invalid email or password. Please try again.",
       );
     } catch (e) {
-      state = AsyncValue.error(
-        e,
-        "An unexpected error occurred. Please try again.",
-      );
+      state = AsyncValue.error(e);
     } finally {
       state = const AsyncValue.data(null);
     }
