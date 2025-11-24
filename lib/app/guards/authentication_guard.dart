@@ -8,23 +8,18 @@ class AuthenticationGuard {
   String? redirect(GoRouterState state) {
     final session = SessionService.getSession();
 
-    final isOnSplash = state.matchedLocation == Routes.splash;
-    final isOnLogin = state.matchedLocation == Routes.login;
-    final isOnMain = state.matchedLocation == Routes.main;
+    final location = state.matchedLocation;
 
-    if (isOnSplash) {
-      return null;
+    final isOnSplash = location == Routes.splash;
+    final isOnLogin = location == Routes.login;
+
+    if (isOnSplash) return null;
+
+    if (session == null) {
+      return isOnLogin ? null : Routes.login;
     }
 
-    if (session == null && !isOnLogin) {
-      return Routes.login;
-    }
-
-    if (session != null && isOnLogin) {
-      return Routes.main;
-    }
-
-    if (session != null && !isOnMain) {
+    if (isOnLogin) {
       return Routes.main;
     }
 

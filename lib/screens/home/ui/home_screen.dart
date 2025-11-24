@@ -1,5 +1,6 @@
-import 'package:future/features/sign_out/ui/sign_out_button.dart';
+import 'package:future/entities/account/ui/balance.dart';
 import 'package:flutter/material.dart';
+import 'package:future/shared/constants/spacing.dart';
 import 'package:future/widgets/header.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,12 +10,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Header(),
-            Text('Home Screen', style: TextStyle(fontSize: 24)),
-            SignOutButton(),
-          ],
+        child: Padding(
+          padding: AppSpacing.p16,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Header(), AppSpacing.gapV24, Balance()],
+          ),
         ),
       ),
     );

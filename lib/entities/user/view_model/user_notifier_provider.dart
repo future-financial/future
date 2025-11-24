@@ -12,11 +12,12 @@ class UserNotifier extends StateNotifier<AsyncValue<User?>> {
   void getCurrentUser() {
     try {
       final User? user = _userService.getCurrentUser();
+
       state = AsyncValue<User?>.data(user);
     } on AuthApiException catch (e) {
       state = AsyncValue.error(e, "Failed to get current user.");
     } catch (e) {
-      state = AsyncValue.error(e, "An unexpected error occurred.");
+      state = AsyncValue.error(e);
     }
   }
 }
