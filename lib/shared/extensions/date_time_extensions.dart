@@ -9,6 +9,18 @@ extension DateTimeExtension on DateTime {
   /// (e.g., "Mon, 2 Oct 2025 14:30").
   String toFullDateTime() => DateFormat('EEE, d MMM yyyy HH:mm').format(this);
 
+  /// Returns the ISO 8601 string representation of the start of the day
+  String startOfDayIsoString() {
+    final startOfDay = DateTime(year, month, day);
+    return startOfDay.toIso8601String();
+  }
+
+  /// Returns the ISO 8601 string representation of the end of the day
+  String endOfDayIsoString() {
+    final endOfDay = DateTime(year, month, day, 23, 59, 59, 999);
+    return endOfDay.toIso8601String();
+  }
+
   /// Checks if [DateTime] has the same day as [other].
   /// Returns `true` if year, month, and day are the same as [other],
   /// ignoring time.
