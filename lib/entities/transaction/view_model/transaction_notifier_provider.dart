@@ -19,8 +19,6 @@ class TransactionNotifierProvider extends StateNotifier<TransactionState> {
 
       final data = await _transactionService.getTransactions();
 
-      print('Fetched transaction data: $data');
-
       state = state.copyWith(
         totalExpense: AsyncValue.data(data['expense'] ?? 0),
         totalIncome: AsyncValue.data(data['income'] ?? 0),
