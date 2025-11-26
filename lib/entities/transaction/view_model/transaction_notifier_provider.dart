@@ -10,14 +10,14 @@ class TransactionNotifierProvider extends StateNotifier<TransactionState> {
   TransactionNotifierProvider(this._transactionService)
     : super(TransactionState());
 
-  Future<void> fetchTransactions() async {
+  Future<void> fetchTodayIncomeAndExpenses() async {
     try {
       state = state.copyWith(
         totalExpense: const AsyncValue.loading(),
         totalIncome: const AsyncValue.loading(),
       );
 
-      final data = await _transactionService.getTransactions();
+      final data = await _transactionService.getIncomeAndExpensesTodayAmount();
 
       state = state.copyWith(
         totalExpense: AsyncValue.data(data['expense'] ?? 0),
@@ -28,6 +28,18 @@ class TransactionNotifierProvider extends StateNotifier<TransactionState> {
         totalExpense: AsyncValue.error(e),
         totalIncome: AsyncValue.error(e),
       );
+    }
+  }
+
+  Future<void> fetchTodayTransactions() async {
+    try {
+      state = state.copyWith(todayTransactions: const AsyncValue.loading());
+
+      final transactions = await _transactionService.getTodayTransactions();
+
+      state = state.copyWith(todayTransactions: AsyncValue.data(transactions));
+    } catch (e) {
+      state = state.copyWith(todayTransactions: AsyncValue.error(e));
     }
   }
 }

@@ -22,7 +22,9 @@ class _ExpenseIncomeCardState extends ConsumerState<ExpenseIncomeCard> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(transactionNotifierProvider.notifier).fetchTransactions();
+      ref
+          .read(transactionNotifierProvider.notifier)
+          .fetchTodayIncomeAndExpenses();
     });
   }
 

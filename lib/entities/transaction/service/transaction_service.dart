@@ -3,7 +3,7 @@ import 'package:future/shared/extensions/date_time_extensions.dart';
 import 'package:future/shared/lib/supabase/instance.dart';
 
 class TransactionService {
-  Future<Map<String, num>> getTransactions() async {
+  Future<Map<String, num>> getIncomeAndExpensesTodayAmount() async {
     try {
       final now = DateTime.now();
       final startOfDay = now.startOfDayIsoString();
@@ -28,6 +28,28 @@ class TransactionService {
       }
 
       return {'income': income, 'expense': expense};
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<TransactionModel>> getTodayTransactions() async {
+    try {
+      final now = DateTime.now();
+      final startOfDay = now.startOfDayIsoString();
+      final endOfDay = now.endOfDayIsoString();
+
+      final response = await supabase
+          .from('transactions')
+          .select()
+          .isFilter('deleted_at', null)
+          .gte('date', startOfDay)
+          .lte('date', endOfDay)
+          .order('date', ascending: false);
+
+      return response
+          .map((response) => TransactionModel.fromJson(response))
+          .toList();
     } catch (e) {
       rethrow;
     }

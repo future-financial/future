@@ -9,6 +9,7 @@ part of 'transaction_model.dart';
 _TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) =>
     _TransactionModel(
       id: (json['id'] as num?)?.toInt(),
+      title: json['title'] as String,
       userId: json['user_id'] as String,
       accountId: (json['account_id'] as num).toInt(),
       categoryId: (json['category_id'] as num?)?.toInt(),
@@ -26,6 +27,7 @@ _TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$TransactionModelToJson(_TransactionModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'title': instance.title,
       'user_id': instance.userId,
       'account_id': instance.accountId,
       'category_id': instance.categoryId,
