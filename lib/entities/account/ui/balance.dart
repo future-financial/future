@@ -35,17 +35,18 @@ class _BalanceState extends ConsumerState<Balance> {
       children: [
         Text(
           'Total Balance',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          style: Theme.of(context).textTheme.bodyLargeBold.copyWith(
             color: Theme.of(context).colorScheme.onSurfaceVariant,
+            fontWeight: FontWeight.w500,
           ),
         ),
         Text(
           AppCurrencyFormatter.format(balance ?? 0),
-          style: Theme.of(context).textTheme.headlineLargeBold.copyWith(
+          style: Theme.of(context).textTheme.displaySmall!.copyWith(
             color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-        AppSpacing.gapV16,
+        AppSpacing.gapV8,
         Row(
           children: [
             Container(
@@ -53,12 +54,12 @@ class _BalanceState extends ConsumerState<Balance> {
               height: 35,
               padding: AppSpacing.p8,
               decoration: BoxDecoration(
-                color: AppColors.green50,
+                color: AppColors.offWhite,
                 shape: BoxShape.circle,
               ),
               child: HeroIcon(
                 HeroIcons.arrowTrendingUp,
-                color: AppColors.green700,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             AppSpacing.gapH8,
@@ -74,7 +75,7 @@ class _BalanceState extends ConsumerState<Balance> {
                   TextSpan(
                     text: '${AppCurrencyFormatter.format(1250)} (10.1%)',
                     style: Theme.of(context).textTheme.bodyMediumBold.copyWith(
-                      color: AppColors.green500,
+                      color: Theme.of(context).colorScheme.primary,
                       letterSpacing: -0.5,
                     ),
                   ),

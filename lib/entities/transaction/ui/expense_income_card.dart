@@ -42,7 +42,7 @@ class _ExpenseIncomeCardState extends ConsumerState<ExpenseIncomeCard> {
             Expanded(
               child: _buildCard(
                 'Income',
-                AppColors.green500,
+                Theme.of(context).colorScheme.primary,
                 HeroIcons.arrowTrendingUp,
                 income ?? 0,
               ),
@@ -69,10 +69,10 @@ class _ExpenseIncomeCardState extends ConsumerState<ExpenseIncomeCard> {
     num amount,
   ) {
     return Container(
-      padding: AppSpacing.p16,
+      padding: AppSpacing.p12,
       decoration: BoxDecoration(
-        color: AppColors.black.withValues(alpha: 0.05),
-        borderRadius: AppBorders.borderRadius16,
+        color: AppColors.offWhite,
+        borderRadius: AppBorders.borderRadius12,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,17 +83,16 @@ class _ExpenseIncomeCardState extends ConsumerState<ExpenseIncomeCard> {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                style: Theme.of(context).textTheme.bodyMediumMedium.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               HeroIcon(icon, color: indicatorColor),
             ],
           ),
-          AppSpacing.gapV8,
           Text(
             AppCurrencyFormatter.format(amount, compact: true),
-            style: Theme.of(context).textTheme.headlineSmallBold.copyWith(
+            style: Theme.of(context).textTheme.headlineMediumBold.copyWith(
               color: Theme.of(context).colorScheme.onSurface,
             ),
           ),

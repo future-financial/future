@@ -20,18 +20,24 @@ class Skeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer(
       direction: ShimmerDirection.ltr,
-      period: const Duration(milliseconds: 2000),
+      period: const Duration(milliseconds: 1500),
       gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [AppColors.gray100, AppColors.gray50, AppColors.gray50],
-        stops: const [0.1, 0.3, 0.5],
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          AppColors.gray100,
+          AppColors.gray50,
+          AppColors.offWhite,
+          AppColors.gray50,
+          AppColors.gray100,
+        ],
+        stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
       ),
       child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: AppColors.gray50,
+          color: AppColors.offWhite,
           shape: shape,
           borderRadius: shape == BoxShape.circle ? null : borderRadius,
         ),
