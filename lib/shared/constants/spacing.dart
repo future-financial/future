@@ -12,11 +12,13 @@ class AppSpacing {
   static EdgeInsets vertical8 = const EdgeInsets.symmetric(vertical: 8);
   static EdgeInsets vertical16 = const EdgeInsets.symmetric(vertical: 16);
 
+  static SizedBox gapH4 = const SizedBox(width: 4);
   static SizedBox gapH8 = const SizedBox(width: 8);
   static SizedBox gapH16 = const SizedBox(width: 16);
   static SizedBox gapH24 = const SizedBox(width: 24);
   static SizedBox gapH32 = const SizedBox(width: 32);
 
+  static SizedBox gapV4 = const SizedBox(height: 4);
   static SizedBox gapV8 = const SizedBox(height: 8);
   static SizedBox gapV16 = const SizedBox(height: 16);
   static SizedBox gapV24 = const SizedBox(height: 24);
