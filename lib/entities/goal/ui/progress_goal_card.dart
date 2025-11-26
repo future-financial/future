@@ -62,10 +62,7 @@ class _ProgressGoalCardState extends ConsumerState<ProgressGoalCard> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(
-          "Priority Goal",
-          style: Theme.of(context).textTheme.headlineSmallMedium,
-        ),
+        Text("Priority Goal", style: Theme.of(context).textTheme.titleMedium),
         GestureDetector(
           onTap: () {
             context.showInfoSnackBar("Feature coming soon!");
@@ -74,7 +71,7 @@ class _ProgressGoalCardState extends ConsumerState<ProgressGoalCard> {
             "See All",
             style: Theme.of(
               context,
-            ).textTheme.bodyMediumMedium.copyWith(color: AppColors.gray400),
+            ).textTheme.bodySmall!.copyWith(color: AppColors.gray400),
           ),
         ),
       ],
