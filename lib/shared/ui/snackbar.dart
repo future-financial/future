@@ -31,7 +31,7 @@ class AppSnackBar extends SnackBar {
     return AppSnackBar._base(
       key: key,
       duration: duration,
-      backgroundColor: AppColors.plum50.withValues(alpha: 0.5),
+      backgroundColor: AppColors.offWhite,
       closeIconColor: AppColors.plum500,
       content: _defaultRow(
         icon: CupertinoIcons.checkmark_circle,
@@ -50,7 +50,7 @@ class AppSnackBar extends SnackBar {
     return AppSnackBar._base(
       key: key,
       duration: duration,
-      backgroundColor: AppColors.cyan50.withValues(alpha: 0.5),
+      backgroundColor: AppColors.offWhite,
       closeIconColor: AppColors.cyan500,
       content: _defaultRow(
         icon: CupertinoIcons.info_circle,
@@ -69,7 +69,7 @@ class AppSnackBar extends SnackBar {
     return AppSnackBar._base(
       key: key,
       duration: duration,
-      backgroundColor: AppColors.red50.withValues(alpha: 0.5),
+      backgroundColor: AppColors.offWhite,
       closeIconColor: AppColors.red500,
       content: _defaultRow(
         icon: CupertinoIcons.xmark_circle,
@@ -88,7 +88,7 @@ class AppSnackBar extends SnackBar {
     return AppSnackBar._base(
       key: key,
       duration: duration,
-      backgroundColor: AppColors.amber50.withValues(alpha: 0.5),
+      backgroundColor: AppColors.offWhite,
       closeIconColor: AppColors.amber500,
       content: _defaultRow(
         icon: CupertinoIcons.exclamationmark_circle,
