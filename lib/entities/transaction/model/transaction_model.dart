@@ -10,6 +10,7 @@ enum TransactionType { income, expense, transfer }
 abstract class TransactionModel with _$TransactionModel {
   const factory TransactionModel({
     int? id,
+    required String title,
     @JsonKey(name: 'user_id') required String userId,
     @JsonKey(name: 'account_id') required int accountId,
     @JsonKey(name: 'category_id') int? categoryId,

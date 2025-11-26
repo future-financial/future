@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TransactionModel {
 
- int? get id;@JsonKey(name: 'user_id') String get userId;@JsonKey(name: 'account_id') int get accountId;@JsonKey(name: 'category_id') int? get categoryId;@JsonKey(name: 'related_account_id') int? get relatedAccountId; num get amount; DateTime get date; String? get note;@JsonKey(name: 'attachment_url') String? get attachmentUrl; TransactionType get type;@JsonKey(name: 'deleted_at') DateTime? get deletedAt;
+ int? get id; String get title;@JsonKey(name: 'user_id') String get userId;@JsonKey(name: 'account_id') int get accountId;@JsonKey(name: 'category_id') int? get categoryId;@JsonKey(name: 'related_account_id') int? get relatedAccountId; num get amount; DateTime get date; String? get note;@JsonKey(name: 'attachment_url') String? get attachmentUrl; TransactionType get type;@JsonKey(name: 'deleted_at') DateTime? get deletedAt;
 /// Create a copy of TransactionModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $TransactionModelCopyWith<TransactionModel> get copyWith => _$TransactionModelCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.relatedAccountId, relatedAccountId) || other.relatedAccountId == relatedAccountId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.date, date) || other.date == date)&&(identical(other.note, note) || other.note == note)&&(identical(other.attachmentUrl, attachmentUrl) || other.attachmentUrl == attachmentUrl)&&(identical(other.type, type) || other.type == type)&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TransactionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.relatedAccountId, relatedAccountId) || other.relatedAccountId == relatedAccountId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.date, date) || other.date == date)&&(identical(other.note, note) || other.note == note)&&(identical(other.attachmentUrl, attachmentUrl) || other.attachmentUrl == attachmentUrl)&&(identical(other.type, type) || other.type == type)&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,userId,accountId,categoryId,relatedAccountId,amount,date,note,attachmentUrl,type,deletedAt);
+int get hashCode => Object.hash(runtimeType,id,title,userId,accountId,categoryId,relatedAccountId,amount,date,note,attachmentUrl,type,deletedAt);
 
 @override
 String toString() {
-  return 'TransactionModel(id: $id, userId: $userId, accountId: $accountId, categoryId: $categoryId, relatedAccountId: $relatedAccountId, amount: $amount, date: $date, note: $note, attachmentUrl: $attachmentUrl, type: $type, deletedAt: $deletedAt)';
+  return 'TransactionModel(id: $id, title: $title, userId: $userId, accountId: $accountId, categoryId: $categoryId, relatedAccountId: $relatedAccountId, amount: $amount, date: $date, note: $note, attachmentUrl: $attachmentUrl, type: $type, deletedAt: $deletedAt)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $TransactionModelCopyWith<$Res>  {
   factory $TransactionModelCopyWith(TransactionModel value, $Res Function(TransactionModel) _then) = _$TransactionModelCopyWithImpl;
 @useResult
 $Res call({
- int? id,@JsonKey(name: 'user_id') String userId,@JsonKey(name: 'account_id') int accountId,@JsonKey(name: 'category_id') int? categoryId,@JsonKey(name: 'related_account_id') int? relatedAccountId, num amount, DateTime date, String? note,@JsonKey(name: 'attachment_url') String? attachmentUrl, TransactionType type,@JsonKey(name: 'deleted_at') DateTime? deletedAt
+ int? id, String title,@JsonKey(name: 'user_id') String userId,@JsonKey(name: 'account_id') int accountId,@JsonKey(name: 'category_id') int? categoryId,@JsonKey(name: 'related_account_id') int? relatedAccountId, num amount, DateTime date, String? note,@JsonKey(name: 'attachment_url') String? attachmentUrl, TransactionType type,@JsonKey(name: 'deleted_at') DateTime? deletedAt
 });
 
 
@@ -65,10 +65,11 @@ class _$TransactionModelCopyWithImpl<$Res>
 
 /// Create a copy of TransactionModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? userId = null,Object? accountId = null,Object? categoryId = freezed,Object? relatedAccountId = freezed,Object? amount = null,Object? date = null,Object? note = freezed,Object? attachmentUrl = freezed,Object? type = null,Object? deletedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = null,Object? userId = null,Object? accountId = null,Object? categoryId = freezed,Object? relatedAccountId = freezed,Object? amount = null,Object? date = null,Object? note = freezed,Object? attachmentUrl = freezed,Object? type = null,Object? deletedAt = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as int?,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
 as int,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as int?,relatedAccountId: freezed == relatedAccountId ? _self.relatedAccountId : relatedAccountId // ignore: cast_nullable_to_non_nullable
@@ -163,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id, @JsonKey(name: 'user_id')  String userId, @JsonKey(name: 'account_id')  int accountId, @JsonKey(name: 'category_id')  int? categoryId, @JsonKey(name: 'related_account_id')  int? relatedAccountId,  num amount,  DateTime date,  String? note, @JsonKey(name: 'attachment_url')  String? attachmentUrl,  TransactionType type, @JsonKey(name: 'deleted_at')  DateTime? deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String title, @JsonKey(name: 'user_id')  String userId, @JsonKey(name: 'account_id')  int accountId, @JsonKey(name: 'category_id')  int? categoryId, @JsonKey(name: 'related_account_id')  int? relatedAccountId,  num amount,  DateTime date,  String? note, @JsonKey(name: 'attachment_url')  String? attachmentUrl,  TransactionType type, @JsonKey(name: 'deleted_at')  DateTime? deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TransactionModel() when $default != null:
-return $default(_that.id,_that.userId,_that.accountId,_that.categoryId,_that.relatedAccountId,_that.amount,_that.date,_that.note,_that.attachmentUrl,_that.type,_that.deletedAt);case _:
+return $default(_that.id,_that.title,_that.userId,_that.accountId,_that.categoryId,_that.relatedAccountId,_that.amount,_that.date,_that.note,_that.attachmentUrl,_that.type,_that.deletedAt);case _:
   return orElse();
 
 }
@@ -184,10 +185,10 @@ return $default(_that.id,_that.userId,_that.accountId,_that.categoryId,_that.rel
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id, @JsonKey(name: 'user_id')  String userId, @JsonKey(name: 'account_id')  int accountId, @JsonKey(name: 'category_id')  int? categoryId, @JsonKey(name: 'related_account_id')  int? relatedAccountId,  num amount,  DateTime date,  String? note, @JsonKey(name: 'attachment_url')  String? attachmentUrl,  TransactionType type, @JsonKey(name: 'deleted_at')  DateTime? deletedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String title, @JsonKey(name: 'user_id')  String userId, @JsonKey(name: 'account_id')  int accountId, @JsonKey(name: 'category_id')  int? categoryId, @JsonKey(name: 'related_account_id')  int? relatedAccountId,  num amount,  DateTime date,  String? note, @JsonKey(name: 'attachment_url')  String? attachmentUrl,  TransactionType type, @JsonKey(name: 'deleted_at')  DateTime? deletedAt)  $default,) {final _that = this;
 switch (_that) {
 case _TransactionModel():
-return $default(_that.id,_that.userId,_that.accountId,_that.categoryId,_that.relatedAccountId,_that.amount,_that.date,_that.note,_that.attachmentUrl,_that.type,_that.deletedAt);case _:
+return $default(_that.id,_that.title,_that.userId,_that.accountId,_that.categoryId,_that.relatedAccountId,_that.amount,_that.date,_that.note,_that.attachmentUrl,_that.type,_that.deletedAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +205,10 @@ return $default(_that.id,_that.userId,_that.accountId,_that.categoryId,_that.rel
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id, @JsonKey(name: 'user_id')  String userId, @JsonKey(name: 'account_id')  int accountId, @JsonKey(name: 'category_id')  int? categoryId, @JsonKey(name: 'related_account_id')  int? relatedAccountId,  num amount,  DateTime date,  String? note, @JsonKey(name: 'attachment_url')  String? attachmentUrl,  TransactionType type, @JsonKey(name: 'deleted_at')  DateTime? deletedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String title, @JsonKey(name: 'user_id')  String userId, @JsonKey(name: 'account_id')  int accountId, @JsonKey(name: 'category_id')  int? categoryId, @JsonKey(name: 'related_account_id')  int? relatedAccountId,  num amount,  DateTime date,  String? note, @JsonKey(name: 'attachment_url')  String? attachmentUrl,  TransactionType type, @JsonKey(name: 'deleted_at')  DateTime? deletedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _TransactionModel() when $default != null:
-return $default(_that.id,_that.userId,_that.accountId,_that.categoryId,_that.relatedAccountId,_that.amount,_that.date,_that.note,_that.attachmentUrl,_that.type,_that.deletedAt);case _:
+return $default(_that.id,_that.title,_that.userId,_that.accountId,_that.categoryId,_that.relatedAccountId,_that.amount,_that.date,_that.note,_that.attachmentUrl,_that.type,_that.deletedAt);case _:
   return null;
 
 }
@@ -219,10 +220,11 @@ return $default(_that.id,_that.userId,_that.accountId,_that.categoryId,_that.rel
 @JsonSerializable()
 
 class _TransactionModel implements TransactionModel {
-  const _TransactionModel({this.id, @JsonKey(name: 'user_id') required this.userId, @JsonKey(name: 'account_id') required this.accountId, @JsonKey(name: 'category_id') this.categoryId, @JsonKey(name: 'related_account_id') this.relatedAccountId, required this.amount, required this.date, this.note, @JsonKey(name: 'attachment_url') this.attachmentUrl, required this.type, @JsonKey(name: 'deleted_at') this.deletedAt});
+  const _TransactionModel({this.id, required this.title, @JsonKey(name: 'user_id') required this.userId, @JsonKey(name: 'account_id') required this.accountId, @JsonKey(name: 'category_id') this.categoryId, @JsonKey(name: 'related_account_id') this.relatedAccountId, required this.amount, required this.date, this.note, @JsonKey(name: 'attachment_url') this.attachmentUrl, required this.type, @JsonKey(name: 'deleted_at') this.deletedAt});
   factory _TransactionModel.fromJson(Map<String, dynamic> json) => _$TransactionModelFromJson(json);
 
 @override final  int? id;
+@override final  String title;
 @override@JsonKey(name: 'user_id') final  String userId;
 @override@JsonKey(name: 'account_id') final  int accountId;
 @override@JsonKey(name: 'category_id') final  int? categoryId;
@@ -247,16 +249,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TransactionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.relatedAccountId, relatedAccountId) || other.relatedAccountId == relatedAccountId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.date, date) || other.date == date)&&(identical(other.note, note) || other.note == note)&&(identical(other.attachmentUrl, attachmentUrl) || other.attachmentUrl == attachmentUrl)&&(identical(other.type, type) || other.type == type)&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TransactionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.accountId, accountId) || other.accountId == accountId)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&(identical(other.relatedAccountId, relatedAccountId) || other.relatedAccountId == relatedAccountId)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.date, date) || other.date == date)&&(identical(other.note, note) || other.note == note)&&(identical(other.attachmentUrl, attachmentUrl) || other.attachmentUrl == attachmentUrl)&&(identical(other.type, type) || other.type == type)&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,userId,accountId,categoryId,relatedAccountId,amount,date,note,attachmentUrl,type,deletedAt);
+int get hashCode => Object.hash(runtimeType,id,title,userId,accountId,categoryId,relatedAccountId,amount,date,note,attachmentUrl,type,deletedAt);
 
 @override
 String toString() {
-  return 'TransactionModel(id: $id, userId: $userId, accountId: $accountId, categoryId: $categoryId, relatedAccountId: $relatedAccountId, amount: $amount, date: $date, note: $note, attachmentUrl: $attachmentUrl, type: $type, deletedAt: $deletedAt)';
+  return 'TransactionModel(id: $id, title: $title, userId: $userId, accountId: $accountId, categoryId: $categoryId, relatedAccountId: $relatedAccountId, amount: $amount, date: $date, note: $note, attachmentUrl: $attachmentUrl, type: $type, deletedAt: $deletedAt)';
 }
 
 
@@ -267,7 +269,7 @@ abstract mixin class _$TransactionModelCopyWith<$Res> implements $TransactionMod
   factory _$TransactionModelCopyWith(_TransactionModel value, $Res Function(_TransactionModel) _then) = __$TransactionModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id,@JsonKey(name: 'user_id') String userId,@JsonKey(name: 'account_id') int accountId,@JsonKey(name: 'category_id') int? categoryId,@JsonKey(name: 'related_account_id') int? relatedAccountId, num amount, DateTime date, String? note,@JsonKey(name: 'attachment_url') String? attachmentUrl, TransactionType type,@JsonKey(name: 'deleted_at') DateTime? deletedAt
+ int? id, String title,@JsonKey(name: 'user_id') String userId,@JsonKey(name: 'account_id') int accountId,@JsonKey(name: 'category_id') int? categoryId,@JsonKey(name: 'related_account_id') int? relatedAccountId, num amount, DateTime date, String? note,@JsonKey(name: 'attachment_url') String? attachmentUrl, TransactionType type,@JsonKey(name: 'deleted_at') DateTime? deletedAt
 });
 
 
@@ -284,10 +286,11 @@ class __$TransactionModelCopyWithImpl<$Res>
 
 /// Create a copy of TransactionModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? userId = null,Object? accountId = null,Object? categoryId = freezed,Object? relatedAccountId = freezed,Object? amount = null,Object? date = null,Object? note = freezed,Object? attachmentUrl = freezed,Object? type = null,Object? deletedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = null,Object? userId = null,Object? accountId = null,Object? categoryId = freezed,Object? relatedAccountId = freezed,Object? amount = null,Object? date = null,Object? note = freezed,Object? attachmentUrl = freezed,Object? type = null,Object? deletedAt = freezed,}) {
   return _then(_TransactionModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int?,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as int?,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,accountId: null == accountId ? _self.accountId : accountId // ignore: cast_nullable_to_non_nullable
 as int,categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as int?,relatedAccountId: freezed == relatedAccountId ? _self.relatedAccountId : relatedAccountId // ignore: cast_nullable_to_non_nullable
