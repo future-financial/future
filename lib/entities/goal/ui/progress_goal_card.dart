@@ -50,6 +50,7 @@ class _ProgressGoalCardState extends ConsumerState<ProgressGoalCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        AppSpacing.gapV16,
         _buildHeader(context),
         AppSpacing.gapV16,
         _buildGoalProgressCard(context, pinnedGoal),
