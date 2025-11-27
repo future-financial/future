@@ -93,9 +93,10 @@ class _ExpenseIncomeCardState extends ConsumerState<ExpenseIncomeCard> {
             ],
           ),
           Text(
-            AppCurrencyFormatter.format(amount, compact: true),
+            AppCurrencyFormatter.format(amount),
             style: Theme.of(context).textTheme.headlineMediumBold.copyWith(
               color: Theme.of(context).colorScheme.onSurface,
+              fontSize: amount >= 1000000 ? 20 : 24,
             ),
           ),
         ],
