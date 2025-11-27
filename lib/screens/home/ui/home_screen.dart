@@ -24,7 +24,6 @@ class HomeScreen extends StatelessWidget {
               Balance(),
               AppSpacing.gapV16,
               ExpenseIncomeCard(),
-              AppSpacing.gapV16,
               ProgressGoalCard(),
               AppSpacing.gapV16,
               QuickActions(),

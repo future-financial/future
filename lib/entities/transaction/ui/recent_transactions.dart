@@ -43,14 +43,13 @@ class _RecentTransactionsState extends ConsumerState<RecentTransactions> {
       padding: AppSpacing.p12,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min, // Penting: ukuran minimum
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Today\'s Transactions',
             style: Theme.of(context).textTheme.titleMedium,
           ),
           AppSpacing.gapV16,
-          // Menggunakan Flexible atau wrap dengan intrinsic height
           _buildTransactionList(
             transactionState,
             transactionState.todayTransactions,
@@ -68,11 +67,11 @@ class _RecentTransactionsState extends ConsumerState<RecentTransactions> {
       return _buildLoadingSkeleton();
     }
 
-    if (transactions?.data == null) {
+    if (transactions?.data == null || transactions!.data!.isEmpty) {
       return _buildEmptyState();
     }
 
-    return _buildTransactionItems(transactions?.data ?? []);
+    return _buildTransactionItems(transactions.data ?? []);
   }
 
   Widget _buildLoadingSkeleton() {
@@ -107,7 +106,7 @@ class _RecentTransactionsState extends ConsumerState<RecentTransactions> {
   }
 
   Widget _buildTransactionItems(List<TransactionModel> transactions) {
-    final displayTransactions = transactions.take(3).toList();
+    final displayTransactions = transactions.take(5).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
