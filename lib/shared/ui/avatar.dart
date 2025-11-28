@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:future/shared/constants/colors.dart';
 import 'package:heroicons/heroicons.dart';
@@ -6,7 +7,7 @@ import 'skeleton.dart';
 enum AvatarShape { circle, rounded }
 
 class Avatar extends StatelessWidget {
-  final String? imageUrl;
+  final String imageUrl;
   final double size;
   final AvatarShape shape;
   final double borderRadius;
@@ -24,7 +25,7 @@ class Avatar extends StatelessWidget {
         ? BorderRadius.circular(size / 2)
         : BorderRadius.circular(borderRadius);
 
-    if (imageUrl == null || imageUrl!.isEmpty) {
+    if (imageUrl.isEmpty) {
       return _AvatarPlaceholder(
         size: size,
         shape: shape,
@@ -34,19 +35,17 @@ class Avatar extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: clipRadius,
-      child: Image.network(
-        imageUrl!,
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
         width: size,
         height: size,
         fit: BoxFit.cover,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-
+        placeholder: (context, url) {
           return shape == AvatarShape.circle
               ? Skeleton(shape: BoxShape.circle)
               : Skeleton(width: size, height: size, borderRadius: clipRadius);
         },
-        errorBuilder: (context, error, stackTrace) {
+        errorWidget: (context, error, stackTrace) {
           return _AvatarPlaceholder(
             size: size,
             shape: shape,
