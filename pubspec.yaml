@@ -2,12 +2,13 @@ name: future
 description: "A simple Financial Application"
 publish_to: "none"
 
-version: 0.7.3-dev
+version: 0.7.4-dev
 
 environment:
   sdk: ^3.9.2
 
 dependencies:
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   currency_formatter: ^2.3.0
   easy_localization: ^3.0.8
