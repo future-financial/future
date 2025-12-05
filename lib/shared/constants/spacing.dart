@@ -27,4 +27,13 @@ class AppSpacing {
   static EdgeInsets symmetric({double horizontal = 0, double vertical = 0}) {
     return EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical);
   }
+
+  static EdgeInsets custom({
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) {
+    return EdgeInsets.fromLTRB(left, top, right, bottom);
+  }
 }

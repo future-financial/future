@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart' hide BottomNavigationBar;
 import 'package:future/screens/home/ui/home_screen.dart';
 import 'package:future/shared/constants/border.dart';
-import 'package:future/shared/extensions/build_context_extensions.dart';
 import 'package:future/shared/ui/bottom_navigation_bar.dart';
+import 'package:future/widgets/transaction_options/ui/transaction_bottom_sheet.dart';
 import 'package:heroicons/heroicons.dart';
 
 class MainScreen extends StatefulWidget {
@@ -50,7 +50,15 @@ class _MainScreenState extends State<MainScreen> {
           borderRadius: AppBorders.borderRadiusFull,
         ),
         onPressed: () {
-          context.showInfoSnackBar("This feature is coming soon!");
+          showModalBottomSheet(
+            enableDrag: true,
+            showDragHandle: true,
+            useSafeArea: true,
+            context: context,
+            builder: (_) {
+              return TransactionBottomSheet();
+            },
+          );
         },
         child: HeroIcon(HeroIcons.plus),
       ),
