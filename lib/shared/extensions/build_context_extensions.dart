@@ -52,4 +52,8 @@ extension BuildContextExtensions on BuildContext {
   void hideKeyboard() {
     FocusScope.of(this).unfocus();
   }
+
+  void hideBottomSheet() {
+    Navigator.of(this).pop();
+  }
 }
